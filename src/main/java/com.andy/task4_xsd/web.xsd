@@ -1,0 +1,90 @@
+<xs:schema attributeFormDefault="unqualified"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.andy.com/test"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="web-app">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+
+                <xs:element type="xs:string" name="display-name"/>
+
+                <xs:element name="welcome-file-list">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="welcome-file" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="filter">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="filter-name"/>
+                            <xs:element type="xs:string" name="filter-class"/>
+                            <xs:element name="init-param" type="InitParameter" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="filter-mapping" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="filter-name"/>
+                            <xs:element type="xs:string" name="url-pattern"/>
+                            <xs:element type="xs:string" name="dispatcher"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="listener" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="listener-class"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="servlet" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="servlet-name"/>
+                            <xs:element type="xs:string" name="servlet-class"/>
+                            <xs:element name="init-param" type="InitParameter" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="servlet-mapping" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="servlet-name"/>
+                            <xs:element type="xs:string" name="url-pattern"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="error-page" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:short" name="error-code" minOccurs="0"/>
+                            <xs:element type="xs:string" name="exception-type" minOccurs="0"/>
+                            <xs:element type="xs:string" name="location"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                
+            </xs:choice>
+            <xs:attribute type="xs:string" name="id"/>
+            <xs:attribute type="xs:string" name="version"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="InitParameter">
+        <xs:sequence>
+            <xs:element type="xs:string" name="param-name"/>
+            <xs:element type="xs:string" name="param-value"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
