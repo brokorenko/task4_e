@@ -74,7 +74,6 @@
         <servlet-name>ForwardedServlet</servlet-name>
         <url-pattern>/ForwardedServlet</url-pattern>
     </servlet-mapping>
-
     <error-page>
         <error-code>404</error-code>
         <location>/error404.html</location>
